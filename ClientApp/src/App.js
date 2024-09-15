@@ -42,18 +42,41 @@ const App = () => {
     };
 
     return (
-        <div>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-6">
             <h1>Employee List</h1>
-            <ul>
-                {employees.map((employee) => (
-                    <li key={employee.name}>
-                        {employee.name} - {employee.value}
-                        <button onClick={() => updateEmployee(employee.name)}>Update</button>
-                        <button onClick={() => deleteEmployee(employee.name)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+         
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Value</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {employees.map((employee, index) => (
+                        <tr key={employee.name}>
+                            <td>{index + 1}</td>
+                            <td></td>
+                            <td>{employee.name}</td>
+                            <td>{employee.value}</td>
+                            <td>
+                                <button onClick={() => updateEmployee(employee.name)}>Update</button> 
+                                <button onClick={() => deleteEmployee(employee.name)}>Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+                    </table>
 
+                </div>
+
+                 <div className="col-md-6">
             <h2>Add New Employee</h2>
             <input
                 type="text"
@@ -69,6 +92,10 @@ const App = () => {
             />
             <button onClick={addEmployee}>Add Employee</button>
 
+
+                </div>
+            </div>
+
             <h2>Actions</h2>
             <button onClick={incrementValues}>Increment Values</button>
             <button onClick={getSumOfValues}>Get Sum of Values</button>
@@ -78,8 +105,9 @@ const App = () => {
                     <h3>Sum of Values:</h3>
                     <p>{totalValue}</p>
                 </div>
-            )}
-        </div>
+                    )}
+
+            </div>
     );
 };
 
